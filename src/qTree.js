@@ -1,11 +1,11 @@
- class Leaf{ //Leaf
+export class Leaf{ //Leaf
     constructor(p, e){
         this.point = p;
         this.entity = e;
     }
 } 
 
- class Node{
+export class Node{
     constructor(p, hl){
         
         this.children = {
@@ -19,7 +19,7 @@
     }
 }
 
- class quadTree {
+export class quadTree {
     constructor(){
         
         this.root = new Node ({x:0.5, y:0.5},0.5)
@@ -164,7 +164,7 @@
 }
 
 //export 
-var qTree = new quadTree();
+export var qTree = new quadTree();
 
 var testCircle = {radius:0.125,x:0.875,y:0.875}
 
