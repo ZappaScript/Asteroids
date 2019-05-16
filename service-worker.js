@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Asteroids/precache-manifest.f69e3a0edc6a0ad38be9128d8a3aae3f.js"
+  "/Asteroids/precache-manifest.bc5ede1063c9b33ff609cfb0196a45e0.js"
 );
 
 workbox.clientsClaim();
