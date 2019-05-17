@@ -39,6 +39,7 @@ class App extends Component {
       ctx.lineTo(node.center.x * this.canvasSize, (node.center.y - node.halfLength)*this.canvasSize);
       ctx.moveTo((node.center.x - node.halfLength) * this.canvasSize,node.center.y * this.canvasSize);
       ctx.lineTo((node.center.x + node.halfLength) * this.canvasSize,node.center.y * this.canvasSize);
+      ctx.strokeStyle = '#FFFFFF';
       ctx.stroke();
       this.drawQuadrant(ctx,node.children.NW)
       this.drawQuadrant(ctx,node.children.NE)
@@ -63,7 +64,7 @@ class App extends Component {
 
       }
   }
-  
+  ctx.strokeStyle = '#FFFFFF';
   ctx.stroke()
 
   }
@@ -85,11 +86,20 @@ class App extends Component {
 
       }
   ctx.closePath()
-  ctx.stroke()
-  ctx.fillStyle = "#8ED6FF"
-  ctx.fill();
-  
 
+  /*Seems like once you set any of the blur's parameters, you cant switch it off, it's going to have to be a separate canvas if we dont want to apply blur to all
+    draw calls.
+    ctx.shadowOffsetX = player.location.x-player.velocityVector.x
+    ctx.shadowOffsetY = player.location.y-player.velocityVector.y
+    ctx.shadowBlur = 40;
+    ctx.shadowColor= `${parseInt(this.QuadTree.vectorNorm(player.velocityVector)*255*4).toString(16).toUpperCase()}`.slice(-2).repeat(3);
+    ctx.shadowColor= `#FFFFFF`;*/
+  //ctx.filter = 'blur(4px)';
+  
+  ctx.stroke()
+  ctx.strokeStyle = '#00FF00';
+  ctx.fillStyle = "#8ED6FF70";
+  ctx.fill();
 
   }
   drawCanvas(){
@@ -178,7 +188,10 @@ class App extends Component {
       
       this.QuadTree.insertPoint(player.location, this.QuadTree.root, player)
     this.setState((prevState)=>{this.setState({player:player})} )
-
+    //setInterval(()=>{console.log(((this.QuadTree.vectorNorm(player.velocityVector)*255).toFixed(0)).toString(16)) },500 )
+    //setInterval(()=>{console.log(((10).toFixed(1)).toString(16)) },500 )
+    //`00${parseInt(this.QuadTree.vectorNorm(player.velocityVector)*255).toString(16).toUpperCase()}`.slice(-2)
+    setInterval(()=>{console.log( "FFFFFF"+`00${parseInt(this.QuadTree.vectorNorm(player.velocityVector)*255).toString(16).toUpperCase()}`.slice(-2)) },500 )
   }
 
   componentWillMount(){
@@ -212,7 +225,7 @@ class App extends Component {
       <div className="App">
 
         <button onClick={this.addRandomEntities} > Add a number of random entities </button>   
-        <canvas ref="canvas" width={640} height={640} tabIndex ={1} onKeyDown = {this.handleKeyDown} onKeyUp={this.handleKeyUp}/>
+        <canvas ref="canvas" width={window.innerHeight} height={window.innerHeight} tabIndex ={1} onKeyDown = {this.handleKeyDown} onKeyUp={this.handleKeyUp}/>
         
         <button onClick={this.printQuadTree} > Print QuadTree to console </button>   
         <p>{1000/(this.state.fps +1)}</p>
