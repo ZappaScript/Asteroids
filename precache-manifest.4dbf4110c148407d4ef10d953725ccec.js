@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/Asteroids/static/css/main.1fdb52f1.chunk.css"
   },
   {
-    "revision": "3626814ad6dbc723c24ef6311a9e3819",
+    "revision": "f50fb6fd4a79efc3692e3ca60dcbb63c",
     "url": "/Asteroids/index.html"
   }
 ];
